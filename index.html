@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Open New Tab Alert</title>
+  <script>
+    function openNewTab() {
+      // Open a new tab
+      var newTab = window.open('', '_blank');
+      
+      // Check if the new tab is opened
+      if (newTab) {
+        // Display an alert in the new tab
+        newTab.alert('This is an alert in the new tab!');
+      } else {
+        // If new tab is blocked, display an alert in the current tab
+        alert('The browser blocked opening a new tab. Please allow pop-ups for this website.');
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Click the button to open a new tab with an alert</h1>
+  <button onclick="openNewTab()">Open New Tab</button>
+</body>
+</html>
