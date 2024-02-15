@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Run JavaScript Twice in New Tab</title>
+    <title>Run JavaScript Twice in New Tab with Delay</title>
 </head>
 <body>
-    <button id="runButton">Run JavaScript Twice in New Tab</button>
+    <button id="runButton">Run JavaScript Twice in New Tab with Delay</button>
 
     <script>
         document.getElementById('runButton').addEventListener('click', function() {
@@ -16,11 +16,19 @@
             // Open a new tab
             var newTab = window.open('about:blank');
 
-            // Once the new tab is loaded, execute the script twice
+            // Once the new tab is loaded, execute the script twice with a delay
             newTab.onload = function() {
-                newTab.eval(scriptCode);
-                newTab.eval(scriptCode);
+                executeScriptWithDelay(newTab, scriptCode, 1000); // Delay set to 1000 milliseconds (1 second)
             };
+
+            function executeScriptWithDelay(tab, code, delay) {
+                setTimeout(function() {
+                    tab.eval(code); // Execute the script in the new tab
+                    setTimeout(function() {
+                        tab.eval(code); // Execute the script again after the delay
+                    }, delay);
+                }, delay);
+            }
         });
     </script>
 </body>
