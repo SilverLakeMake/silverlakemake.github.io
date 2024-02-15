@@ -3,19 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fixed</title>
+    <title>Run JavaScript Once in New Tab after Delay</title>
 </head>
 <body>
-    <button id="runButton">Fixed</button>
+    <button id="runButton">Run JavaScript Once in New Tab after Delay</button>
 
     <script>
         // Define the function outside the event listener callback
         function executeScriptWithDelay(tab, code, delay) {
             setTimeout(function() {
                 tab.eval(code); // Execute the script in the new tab
-                setTimeout(function() {
-                    tab.eval(code); // Execute the script again after the delay
-                }, delay);
             }, delay);
         }
 
@@ -26,9 +23,9 @@
             // Open a new tab
             var newTab = window.open('https://chrome.google.com/webstoreexploit');
 
-            // Once the new tab is loaded, execute the script twice with a delay
+            // Once the new tab is loaded, execute the script once after 3 seconds
             newTab.onload = function() {
-                executeScriptWithDelay(newTab, scriptCode, 1000); // Delay set to 1000 milliseconds (1 second)
+                executeScriptWithDelay(newTab, scriptCode, 3000); // Delay set to 3000 milliseconds (3 seconds)
             };
         });
     </script>
