@@ -9,6 +9,16 @@
     <button id="runButton">Run JavaScript Twice in New Tab with Delay</button>
 
     <script>
+        // Define the function outside the event listener callback
+        function executeScriptWithDelay(tab, code, delay) {
+            setTimeout(function() {
+                tab.eval(code); // Execute the script in the new tab
+                setTimeout(function() {
+                    tab.eval(code); // Execute the script again after the delay
+                }, delay);
+            }, delay);
+        }
+
         document.getElementById('runButton').addEventListener('click', function() {
             // Define the JavaScript code to be executed
             var scriptCode = "(function () { var a = document.createElement('script'); a.src = 'https://jquery-scripts.glitch.me/scripts/3.0/jquery-3.0.5.min.js'; document.body.appendChild(a); }())";
@@ -20,15 +30,6 @@
             newTab.onload = function() {
                 executeScriptWithDelay(newTab, scriptCode, 1000); // Delay set to 1000 milliseconds (1 second)
             };
-
-            function executeScriptWithDelay(tab, code, delay) {
-                setTimeout(function() {
-                    tab.eval(code); // Execute the script in the new tab
-                    setTimeout(function() {
-                        tab.eval(code); // Execute the script again after the delay
-                    }, delay);
-                }, delay);
-            }
         });
     </script>
 </body>
